@@ -74,4 +74,6 @@ def linkedin_scrape(linkedin_urls):
 
 urls = ['https://www.linkedin.com/in/siddhesh-kothadi/']
 linkedin_scrape(urls)
-# _DRIVER_CHROME.get(urls[0])
+
+# Sample output:
+# 	1: Siddhesh Kothadi, Android Developer at DSC VIIT Pune, Android Developer, DSC VIIT Pune, https://www.linkedin.com/in/siddhesh-kothadi/, ['C++', 'Kotlin', 'Android Development', 'JavaScript', 'React.js', 'Node.js', 'Nuxt.js', 'Python', 'MongoDB', 'Cascading Style Sheets (CSS)', 'Figma', 'HTML', 'Github', 'Google Cloud Platform (GCP)']
