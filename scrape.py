@@ -4,7 +4,7 @@ from selenium import webdriver
 from parsel import Selector
 import time
 
-chromedriver = "/home/sid/Downloads/chromedriver_linux64/chromedriver"
+chromedriver = '/usr/local/bin/chromedriver'
 
 _DRIVER_CHROME = webdriver.Chrome(chromedriver)
 
@@ -30,9 +30,9 @@ def linkedin_scrape(linkedin_urls):
 		# sleep(5)
 
 		# _DRIVER_CHROME.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-		for i in range(1, last_height, 180): 
+		for i in range(1, last_height, 120): 
 			_DRIVER_CHROME.execute_script("window.scrollTo(0, {});".format(i))
-			time.sleep(0.5)
+			time.sleep(1)
 
 		time.sleep(SCROLL_PAUSE_TIME)
 
@@ -80,5 +80,5 @@ def linkedin_scrape(linkedin_urls):
 		# print(f'{len(profiles)}: {name}, {headline}, {position}, {company}, {url}, {skill_set}')
 	return profiles
 
-urls = ['https://www.linkedin.com/in/mayank-sahu-12238b191/', 'https://www.linkedin.com/in/atharva-parikh-ap07/', 'https://www.linkedin.com/in/sidhant-khamankar/']
+urls = ['https://www.linkedin.com/in/atharva-parikh-ap07/', 'https://www.linkedin.com/in/sidhant-khamankar/','https://www.linkedin.com/in/mayank-sahu-12238b191/','https://www.linkedin.com/in/siddhesh-kothadi/']
 linkedin_scrape(urls)
