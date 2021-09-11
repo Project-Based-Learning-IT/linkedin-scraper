@@ -3,8 +3,10 @@
 from selenium import webdriver
 from parsel import Selector
 import time
+import pathlib
 
-chromedriver = '/usr/local/bin/chromedriver'
+
+chromedriver = str(pathlib.Path().resolve())+'/chromedriver.exe' #Put your chromedriver.exe into current directory as MAC and windows have different system path 😉
 
 _DRIVER_CHROME = webdriver.Chrome(chromedriver)
 
