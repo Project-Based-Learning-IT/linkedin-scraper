@@ -41,29 +41,19 @@ def linkedin_scrape(linkedin_urls):
 		selector = Selector(text=_DRIVER_CHROME.page_source)
 
 		# Use xpath to extract the exact class containing the profile name
-		name = selector.xpath('//*[starts-with(@class, "inline")]/text()').extract_first()
+		name = selector.xpath('//*[starts-with(@class, "text-heading-xlarge")]/text()').extract_first()
 		if name:
 			name = name.strip()
 
-		# Use xpath to extract the exact class containing the profile position
-		position = selector.xpath('//*[starts-with(@class, "mt1")]/text()').extract_first()
+		position = selector.xpath('//*[starts-with(@class, "text-body-medium")]/text()').extract_first()
+		headline = ""
+		company = ""
 
 		if position:
+			headline = position.strip()
+			company = headline[headline.find('at')+3:]
 			position = position.strip()
 			position = position[0:position.find(' at ')]
-
-		# Use xpath to extract the exact class containing the profile company
-		company = selector.xpath('//*[starts-with(@class, "text-align-left")]/text()').extract_first()
-
-		if company:
-			company = company.strip()
-
-		# Use xpath to extract skills
-
-		# skills = selector.xpath('//*[starts-with(@class, "pv-skill")]/text()').extract_first()
-
-		# if skills:
-		# 	skills = skills.strip()
 
 		#locate link to expand skills
 		show_more_skills_button = _DRIVER_CHROME.find_element_by_class_name("pv-skills-section__chevron-icon")
@@ -78,11 +68,8 @@ def linkedin_scrape(linkedin_urls):
 			# print(skill.text)
 			skill_set.append(skill.text)
 
-		print(skill_set)
-
-
-		profiles.append([name, position, company, url])
-		print(f'{len(profiles)}: {name}, {position}, {company}, {url}, {skill_set}')
+		profiles.append([name, headline, position, company, url])
+		print(f'{len(profiles)}: {name}, {headline}, {position}, {company}, {url}, {skill_set}')
 	return profiles
 
 urls = ['https://www.linkedin.com/in/siddhesh-kothadi/']
