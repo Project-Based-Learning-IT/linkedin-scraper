@@ -45,13 +45,13 @@ urls = readUrls(url_file)
 #		 Start - 10		End - ?
 #		------------------------
 #				MAYANK
-#		 Start - 10		End - ?
+#		 Start - 0		End - ?
 #		------------------------
 #				SIDHESH
-#		 Start - 10		End - ?
+#		 Start - 0		End - ?
 #		------------------------
 #				SIDHANT
-#		 Start - 10		End - ?
+#		 Start - 0		End - ?
 #---------------------------------------------
 
 #CHANGE
