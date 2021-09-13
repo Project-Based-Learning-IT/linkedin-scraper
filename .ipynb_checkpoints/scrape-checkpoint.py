@@ -6,7 +6,7 @@ import time
 import pathlib
 
 
-chromedriver = str(pathlib.Path().resolve())+'/chromedriver.exe' #Put your chromedriver.exe into current directory as MAC and windows have different system path 😉
+chromedriver = str(pathlib.Path().resolve())+'/chromedriverMac' #Put your chromedriver.exe into current directory as MAC and windows have different system path 😉
 
 _DRIVER_CHROME = webdriver.Chrome(chromedriver)
 
@@ -20,14 +20,17 @@ elementID.send_keys('project@123')
 
 elementID.submit()
 
+start = 0
+stop = 1
+
 def linkedin_scrape(linkedin_urls):
 	SCROLL_PAUSE_TIME = 2
 
 	# Get scroll height
 	last_height = int(_DRIVER_CHROME.execute_script("return document.body.scrollHeight"))
 	profiles = []
-	for url in linkedin_urls:
-
+	for p in range(start,stop):
+		url = linkedin_urls[p]
 		_DRIVER_CHROME.get(url)
 		# sleep(5)
 
@@ -77,10 +80,11 @@ def linkedin_scrape(linkedin_urls):
 
 		profiles.append([name, skill_set])
 		print(f'{len(profiles)}: {name}, {url}, {skill_set}')
-
+		_DRIVER_CHROME.close()
 		# profiles.append([name, headline, position, company, url])
 		# print(f'{len(profiles)}: {name}, {headline}, {position}, {company}, {url}, {skill_set}')
 	return profiles
 
-urls = ['https://www.linkedin.com/in/atharva-parikh-ap07/', 'https://www.linkedin.com/in/sidhant-khamankar/','https://www.linkedin.com/in/mayank-sahu-12238b191/','https://www.linkedin.com/in/siddhesh-kothadi/']
+# urls = ['https://www.linkedin.com/in/atharva-parikh-ap07/', 'https://www.linkedin.com/in/sidhant-khamankar/','https://www.linkedin.com/in/mayank-sahu-12238b191/','https://www.linkedin.com/in/siddhesh-kothadi/']
+urls = ['https://www.linkedin.com/in/mohit-charkha-98386b159/']
 linkedin_scrape(urls)
