@@ -58,7 +58,7 @@ urls = readUrls(url_file)
 #CHANGE
 #Enter Start and End ids to scrape
 start = 1 #1 based indexing
-end = 1 #1 based indexing
+end = 25 #1 based indexing
 
 filenames = ['atharva','mayank','siddhant','siddesh']
 

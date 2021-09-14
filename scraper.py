@@ -5,7 +5,7 @@ from parsel import Selector
 import time
 import pathlib
 import csv
-
+from selenium.common.exceptions import NoSuchElementException
 #------------------------------------- MAKING CONNECTION-------------------------------------
 chromedriver = str(pathlib.Path().resolve())+'/chromedriverMac' 
 #Put your chromedriver.exe into current directory as MAC and windows have different system path
@@ -55,21 +55,21 @@ urls = readUrls(url_file)
 
 #CHANGE
 #Enter Start and End ids to scrape
-start = 1 #1 based indexing
-end = 1 #1 based indexing
+start = 14 #1 based indexing
+end = 14 #1 based indexing
 
 filenames = ['atharva','mayank','siddhant','siddesh']
 
 filename = filenames[0] + '.csv' #CHANGE
 
 def linkedin_scrape(linkedin_urls,filename):
-    SCROLL_PAUSE_TIME = 2
+    SCROLL_PAUSE_TIME = 4
 
     # Get scroll height
     last_height = int(_DRIVER_CHROME.execute_script("return document.body.scrollHeight"))
-    profiles = []
 
     for p in range(start-1,end):
+        profiles = []
         url = linkedin_urls[p]
         _DRIVER_CHROME.get(url)
 
@@ -93,11 +93,12 @@ def linkedin_scrape(linkedin_urls,filename):
             name = name.strip()
 
         #locate link to expand skills
-        show_more_skills_button = _DRIVER_CHROME.find_element_by_class_name("pv-skills-section__chevron-icon")
-        _DRIVER_CHROME.execute_script("arguments[0].click();", show_more_skills_button)
-
-        skills = _DRIVER_CHROME.find_elements_by_xpath("//*[starts-with(@class,'pv-skill-category-entity__name-text')]")
-
+        try:
+            show_more_skills_button = _DRIVER_CHROME.find_element_by_class_name("pv-skills-section__chevron-icon")
+            _DRIVER_CHROME.execute_script("arguments[0].click();", show_more_skills_button)
+            skills = _DRIVER_CHROME.find_elements_by_xpath("//*[starts-with(@class,'pv-skill-category-entity__name-text')]")
+        except NoSuchElementException:
+            continue
         #create skills set
         skill_set = []
         for skill in skills:
