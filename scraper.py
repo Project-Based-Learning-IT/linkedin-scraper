@@ -22,7 +22,7 @@ elementID.send_keys('project@123')
 
 elementID.submit()
 #CHANGE - if captcha occurs
-# time.sleep(30) # to solve CAPTCHA 
+time.sleep(30) # to solve CAPTCHA 
 
 #------------------------------------- GET LIST OF URLS-------------------------------------
 def readUrls(DATA_FILE):        
@@ -55,7 +55,7 @@ urls = readUrls(url_file)
 
 #CHANGE
 #Enter Start and End ids to scrape
-start = 162 #1 based indexing
+start = 231 #1 based indexing
 end = 247 #1 based indexing
 
 filenames = ['atharva','mayank','siddhant','siddesh']
