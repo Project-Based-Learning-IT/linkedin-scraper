@@ -41,7 +41,7 @@ urls = readUrls(url_file)
 #----------------------------------- SCRAPE PROFILES-------------------------------------
 #------ BOOKEEPING for next iteration ------- #CHANGE
 #				ATHARVA
-#		 Start - 10		End - ?
+#		 Start - 127		End - 50
 #		------------------------
 #				MAYANK
 #		 Start - 0		End - ?
@@ -55,8 +55,8 @@ urls = readUrls(url_file)
 
 #CHANGE
 #Enter Start and End ids to scrape
-start = 14 #1 based indexing
-end = 14 #1 based indexing
+start = 162 #1 based indexing
+end = 247 #1 based indexing
 
 filenames = ['atharva','mayank','siddhant','siddesh']
 
@@ -67,7 +67,6 @@ def linkedin_scrape(linkedin_urls,filename):
 
     # Get scroll height
     last_height = int(_DRIVER_CHROME.execute_script("return document.body.scrollHeight"))
-
     for p in range(start-1,end):
         profiles = []
         url = linkedin_urls[p]
