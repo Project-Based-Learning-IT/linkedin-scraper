@@ -41,7 +41,7 @@ urls = readUrls(url_file)
 #----------------------------------- SCRAPE PROFILES-------------------------------------
 #------ BOOKEEPING for next iteration ------- #CHANGE
 #				ATHARVA
-#		 Start - 10		End - ?
+#		 Start - 127		End - 50
 #		------------------------
 #				MAYANK
 #		 Start - 0		End - ?
@@ -65,7 +65,6 @@ filename = filenames[2] + '.csv' #CHANGE
 def linkedin_scrape(linkedin_urls,filename):
     SCROLL_PAUSE_TIME = 4
 
-    
 
     for p in range(start-1,end):
         profiles = []

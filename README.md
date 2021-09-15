@@ -3,6 +3,6 @@
 ## Fields to scrape:
 - #### Name
 - #### Skills
-#### Scraped data stored in json format in `{your_name}.json`
-#### To change the parameters for your execution search `#CHANGE` to see all the places change is necessary in file `profilescraper.py`
+#### Scraped data stored in csv format in `{your_name}.csv`
+#### To change the parameters for your execution search `#CHANGE` to see all the places change is necessary in file `scraper.py`
 #### [LinkedIn](https://www.linkedin.com/search/results/people/?origin=FACETED_SEARCH&page=2&schoolFilter=%5B%22246006%22%5D) URL used

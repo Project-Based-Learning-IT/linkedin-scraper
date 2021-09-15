@@ -8,7 +8,7 @@ import json
 import os
 
 #------------------------------------- MAKING CONNECTION-------------------------------------
-chromedriver = str(pathlib.Path().resolve())+'/chromedriverMac' 
+chromedriver = str(pathlib.Path().resolve())+'/chromedriver.exe' 
 #Put your chromedriver.exe into current directory as MAC and windows have different system path
 
 _DRIVER_CHROME = webdriver.Chrome(chromedriver)
@@ -49,19 +49,19 @@ urls = readUrls(url_file)
 #		------------------------
 #				SIDHESH
 #		 Start - 0		End - ?
-#		------------------------
+#		------------------------ 
 #				SIDHANT
 #		 Start - 0		End - ?
 #---------------------------------------------
 
 #CHANGE
 #Enter Start and End ids to scrape
-start = 0 #0 based indexing
-end = 1 #0 based indexing
+start = 300 #0 based indexing
+end = 320 #0 based indexing
 
 filenames = ['atharva','mayank','siddhant','siddesh']
 
-filename = filenames[0] + '.json' #CHANGE
+filename = filenames[1] + '.json' #CHANGE
 
 def linkedin_scrape(linkedin_urls,filename):
 	SCROLL_PAUSE_TIME = 2
