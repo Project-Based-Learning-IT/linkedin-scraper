@@ -91,7 +91,6 @@ def linkedin_scrape(linkedin_urls,filename):
             last_height = new_height
 
         selector = Selector(text=_DRIVER_CHROME.page_source)
-
         # Use xpath to extract the exact class containing the profile name
         name = selector.xpath('//*[starts-with(@class, "text-heading-xlarge")]/text()').extract_first()
         if name:
