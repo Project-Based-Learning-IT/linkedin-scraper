@@ -7,7 +7,7 @@ import pathlib
 import csv
 from selenium.common.exceptions import NoSuchElementException
 #------------------------------------- MAKING CONNECTION-------------------------------------
-chromedriver = str(pathlib.Path().resolve())+'/chromedriverMac' 
+chromedriver = str(pathlib.Path().resolve())+'/chromedriver.exe' 
 #Put your chromedriver.exe into current directory as MAC and windows have different system path
 
 _DRIVER_CHROME = webdriver.Chrome(chromedriver)
@@ -15,14 +15,14 @@ _DRIVER_CHROME = webdriver.Chrome(chromedriver)
 _DRIVER_CHROME.get('https://www.linkedin.com/uas/login')
 
 elementID = _DRIVER_CHROME.find_element_by_id('username')
-elementID.send_keys('maatsisipbl@gmail.com')
+elementID.send_keys('sutraparke@biyac.com')
 
 elementID = _DRIVER_CHROME.find_element_by_id('password')
 elementID.send_keys('project@123')
 
 elementID.submit()
 #CHANGE - if captcha occurs
-# time.sleep(30) # to solve CAPTCHA 
+time.sleep(30) # to solve CAPTCHA 
 
 #------------------------------------- GET LIST OF URLS-------------------------------------
 def readUrls(DATA_FILE):        
@@ -49,41 +49,47 @@ urls = readUrls(url_file)
 #				SIDHESH
 #		 Start - 0		End - ?
 #		------------------------
-#				SIDHANT
-#		 Start - 0		End - ?
+#				SIDHANT | INITIAL - CURR | END
+#		 Start - 742		End - 742 | 989
 #---------------------------------------------
 
 #CHANGE
 #Enter Start and End ids to scrape
-start = 14 #1 based indexing
-end = 14 #1 based indexing
+start = 742 #1 based indexing
+end =  743 #1 based indexing
 
-filenames = ['atharva','mayank','siddhant','siddesh']
+filenames = ['atharva','mayank','sidhant','siddesh']
 
-filename = filenames[0] + '.csv' #CHANGE
+filename = filenames[2] + '.csv' #CHANGE
 
 def linkedin_scrape(linkedin_urls,filename):
     SCROLL_PAUSE_TIME = 4
 
-    # Get scroll height
-    last_height = int(_DRIVER_CHROME.execute_script("return document.body.scrollHeight"))
+    
 
     for p in range(start-1,end):
         profiles = []
         url = linkedin_urls[p]
         _DRIVER_CHROME.get(url)
 
-        for i in range(1, last_height, 120): 
-            _DRIVER_CHROME.execute_script("window.scrollTo(0, {});".format(i))
-            time.sleep(1)
+        # Get scroll height
+        last_height = int(_DRIVER_CHROME.execute_script("return document.body.scrollHeight")) # MAY THROW ERROR WHEN LOGGED OUT
 
-        time.sleep(SCROLL_PAUSE_TIME)
+        curr_height=1
+        while True:
+            for i in range(curr_height, last_height, 120): 
+                _DRIVER_CHROME.execute_script("window.scrollTo(0, {});".format(i))
+                time.sleep(1)
+            
+            # Wait to load page
+            time.sleep(SCROLL_PAUSE_TIME)
 
-        # Calculate new scroll height and compare with last scroll height
-        new_height = _DRIVER_CHROME.execute_script("return document.body.scrollHeight")
-        if new_height == last_height:
-            break
-        last_height = new_height
+            # Calculate new scroll height and compare with last scroll height
+            new_height = _DRIVER_CHROME.execute_script("return document.body.scrollHeight")
+            if new_height == last_height:
+                break
+            curr_height =last_height
+            last_height = new_height
 
         selector = Selector(text=_DRIVER_CHROME.page_source)
 
@@ -107,7 +113,7 @@ def linkedin_scrape(linkedin_urls,filename):
         profiles.append(name)
         profiles.append(skill_set)
         print(profiles)
-        with open(filename, 'a+', encoding='UTF8') as f:
+        with open(filename, 'a+', encoding='UTF8', newline='') as f:
             writer = csv.writer(f)
             # write the data
             writer.writerow(profiles)
