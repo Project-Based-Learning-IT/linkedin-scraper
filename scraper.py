@@ -7,7 +7,7 @@ import pathlib
 import csv
 from selenium.common.exceptions import NoSuchElementException
 #------------------------------------- MAKING CONNECTION-------------------------------------
-chromedriver = str(pathlib.Path().resolve())+'/chromedriverMac' 
+chromedriver = str(pathlib.Path().resolve())+'/chromedriver.exe' 
 #Put your chromedriver.exe into current directory as MAC and windows have different system path
 
 _DRIVER_CHROME = webdriver.Chrome(chromedriver)
@@ -55,12 +55,12 @@ urls = readUrls(url_file)
 
 #CHANGE
 #Enter Start and End ids to scrape
-start = 14 #1 based indexing
-end = 14 #1 based indexing
+start = 471 #1 based indexing
+end = 493 #1 based indexing
 
 filenames = ['atharva','mayank','siddhant','siddesh']
 
-filename = filenames[0] + '.csv' #CHANGE
+filename = filenames[1] + '.csv' #CHANGE
 
 def linkedin_scrape(linkedin_urls,filename):
     SCROLL_PAUSE_TIME = 4
