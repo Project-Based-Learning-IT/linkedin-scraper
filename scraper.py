@@ -15,10 +15,10 @@ _DRIVER_CHROME = webdriver.Chrome(chromedriver)
 _DRIVER_CHROME.get('https://www.linkedin.com/uas/login')
 
 elementID = _DRIVER_CHROME.find_element_by_id('username')
-elementID.send_keys('sutraparke@biyac.com')
+elementID.send_keys('') # Enter your email between quotes
 
 elementID = _DRIVER_CHROME.find_element_by_id('password')
-elementID.send_keys('project@123')
+elementID.send_keys('') # Enter your password between quotes
 
 elementID.submit()
 #CHANGE - if captcha occurs
