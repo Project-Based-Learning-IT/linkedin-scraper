@@ -49,14 +49,14 @@ urls = readUrls(url_file)
 #				SIDHESH
 #		 Start - 0		End - ?
 #		------------------------
-#				SIDHANT | INITIAL - CURR | END
-#		 Start - 742		End - 742 | 989
+#				SIDHANT | INITIAL | CURR - CURR | END
+#		 Start - 742 | 839		End - 838 | 989 
 #---------------------------------------------
 
 #CHANGE
 #Enter Start and End ids to scrape
-start = 742 #1 based indexing
-end =  743 #1 based indexing
+start = 800 #1 based indexing
+end =  840 #1 based indexing
 
 filenames = ['atharva','mayank','sidhant','siddesh']
 
