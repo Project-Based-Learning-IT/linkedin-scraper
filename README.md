@@ -24,6 +24,6 @@
 ### Fields to scrape using Scraper.ipynb:
 - Everything about is profile quickly fetched in a csv
 
-#### [VIIT College Students and Alumnis search page](https://www.linkedin.com/search/results/people/?origin=FACETED_SEARCH&page=2&schoolFilter=%5B%22246006%22%5D) URL is used to generate profile urls and then run scraper.py or scraper.ipynb
+#### [VIIT College Students and Alumnis search page](https://www.linkedin.com/search/results/people/?origin=FACETED_SEARCH&page=2&schoolFilter=%5B%22246006%22%5D) URL is used to generate profile urls using profile_url_scraper.py and then run scraper.py or scraper.ipynb
 
 
