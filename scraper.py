@@ -22,7 +22,7 @@ elementID.send_keys('project@123')
 
 elementID.submit()
 #CHANGE - if captcha occurs
-# time.sleep(30) # to solve CAPTCHA 
+time.sleep(30) # to solve CAPTCHA 
 
 #------------------------------------- GET LIST OF URLS-------------------------------------
 def readUrls(DATA_FILE):        
@@ -41,7 +41,7 @@ urls = readUrls(url_file)
 #----------------------------------- SCRAPE PROFILES-------------------------------------
 #------ BOOKEEPING for next iteration ------- #CHANGE
 #				ATHARVA
-#		 Start - 10		End - ?
+#		 Start - 127		End - 50
 #		------------------------
 #				MAYANK
 #		 Start - 0		End - ?
@@ -67,7 +67,6 @@ def linkedin_scrape(linkedin_urls,filename):
 
     # Get scroll height
     last_height = int(_DRIVER_CHROME.execute_script("return document.body.scrollHeight"))
-
     for p in range(start-1,end):
         profiles = []
         url = linkedin_urls[p]
